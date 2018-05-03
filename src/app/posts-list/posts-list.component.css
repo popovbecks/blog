@@ -1,0 +1,65 @@
+*{
+  list-style-type: none;
+
+}
+.card-body a{
+  float:right;
+}
+.button-group{
+  float: right;
+}
+.col-md-12{padding: 0;}
+.blogBlock{
+  width: 900px;
+}
+.commentsBlock{
+  margin-top: 15px;
+}
+.comments-label{margin-left: 13px;}
+.blog-item{
+  box-shadow:-9px 6px 16px 1px rgba(179,162,162,1);
+  -webkit-box-shadow:-9px 6px 16px 1px rgba(179,162,162,1);
+  -moz-box-shadow:-9px 6px 16px 1px rgba(179,162,162,1);
+}
+.container{
+  padding-right:0;
+  padding-left: 0;
+
+}
+.update-form-item{
+  margin-top: 15px;
+  box-shadow:-9px 6px 16px 1px rgba(99,183,26,1);
+  -webkit-box-shadow:-9px 6px 16px 1px rgba(99,183,26,1);
+  -moz-box-shadow:-9px 6px 16px 1px rgba(99,183,26,1);
+  padding: 20px;
+}
+.comment-container{
+  overflow: hidden;
+  margin-bottom: 10px;
+  width: 800px;
+}
+.comments-link{
+  color: red;
+  margin: 0;
+  cursor: pointer;
+}
+.comments-link:hover{
+  color: chartreuse;
+  text-decoration: underline;
+}
+.text-side{
+  float:left;
+  width: 400px;
+ border: 3px solid green;
+  border-radius: 10px;
+}
+.buttons-side{
+  float: left;
+  margin-left: 10px;
+}
+.text{
+  padding:15px;
+}
+.comments-form{
+  width:600px;
+}

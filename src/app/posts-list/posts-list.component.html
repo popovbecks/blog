@@ -1,0 +1,127 @@
+<div class="post-item" >
+  <div class="container">
+    <div class="col-md-12">
+      <ul *ngFor="let item of items, let i = index">
+        <li>
+          <div class="blogBlock">
+            <div class="blog-item">
+              <div class="container">
+                <div class="col-md-12">
+                  <div class="card" >
+                    <div class="card-body">
+                      <div class="button-group">
+                        <button class="btn btn-primary" type="button" (click)="editItem($event, item) ">Edit</button>
+                        <button class="btn btn-danger" type="button" (click)="deleteItem($event, item)">Delete</button>
+                      </div>
+                      <div class="number"><p># {{i+1}}</p></div>
+                      <h5 class="card-title">Title: {{item.title}}</h5>
+                      <p class="card-text">Description: {{item.description}}</p>
+                      <p>Date: {{item.date}}</p>
+                      <p class="comments-link" (click)="changeCommentState(item)">Comments: {{item.comments.length}}</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div class="update-form-item" *ngIf="editState && itemToEdit.id == item.id">
+              <div class="container">
+                <div class="col-md-12">
+                  <div class="update-form">
+                    <form (ngSubmit)="updateItem(item)">
+                      <div class="form-group">
+                        <label>Post Title</label>
+                        <input type="text" class="form-control" placeholder="Add Title" [(ngModel)]="item.title" name="title">
+                      </div>
+                      <div class="form-group">
+                        <label>Description</label>
+                        <textarea type="text" class="form-control" placeholder="Add Description" [(ngModel)]="item.description" name="description"></textarea>
+                      </div>
+                      <button class="btn btn-danger" type="submit">
+                        Update</button>
+                      <button class="btn btn-primary" type="button" (click)="clearState()">
+                        Cancel</button>
+                    </form>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <div class="commentsBlock" *ngIf="commentsState && itemToShow.id == item.id">
+            <div class="comments-list">
+              <div class="row">
+                <div class="col-md-12">
+                  <p class="comments-label">Comments:</p>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col-md-2"></div>
+                <div class="col md-10">
+                  <ul *ngFor="let com of item.comments">
+                    <li>
+                      <div class="comment-container">
+                        <div class="text-side">
+                          <div class="text">
+                            <p>User Name: {{com.name}}</p>
+                            <p>Message: {{com.message}}</p>
+                          </div>
+                        </div>
+                        <div class="buttons-side">
+                          <button class="btn btn-danger" type="button" (click)="editComment($event, com)">
+                            Edit</button>
+                          <button class="btn btn-primary" type="button" (click)="deleteComment($event, item, com)">
+                            Delete</button>
+                        </div>
+                      </div>
+                      <div class="update-comment-form" *ngIf="editCommentState && commentToEdit.id == com.id">
+                        <div class="row">
+                          <div class="col-md-6">
+                            <form (ngSubmit)="updateComment(item, com)">
+                              <div class="form-group">
+                                <input type="text" class="form-control" placeholder="Name" [(ngModel)]="com.name" name="name">
+                              </div>
+                              <div class="form-group">
+                                <textarea type="text" class="form-control" placeholder="Message" [(ngModel)]="com.message" name="message"></textarea>
+                              </div>
+                              <button class="btn btn-danger" type="submit" (click)="updateComment(item, com)">
+                                Update</button>
+                              <button class="btn btn-primary" type="button" (click)="clearCommentState()">
+                                Cancel</button>
+                            </form>
+                          </div>
+                        </div>
+                        <div class="col-md-6"></div>
+                      </div>
+                    </li>
+                </ul>
+                  <div class="comments-form">
+                    <div class="container">
+                      <div class="row">
+                        <div class="col-md-12">
+                          <p class="comments-label">Form:</p>
+                        </div>
+                      </div>
+                      <div class="col-md-12">
+                        <form (ngSubmit)="onSubmitCom(item)">
+                          <div class="form-group">
+                            <input type="text" class="form-control" placeholder="Add Name" [(ngModel)]="comment.name" name="name">
+                          </div>
+                          <div class="form-group">
+                            <textarea type="text" class="form-control" placeholder="Add Message" [(ngModel)]="comment.message" name="message"></textarea>
+                          </div>
+                          <button class="btn btn-danger" type="submit">
+                            Add</button>
+                        </form>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+  </div>
+</div>
+
+
